@@ -49,12 +49,14 @@ def generate_launch_description():
             ],
             output='screen'
         ),
-
+            
+        # Cmd_vel bridge from gazebo to ros2
         Node(
             package='ros_gz_bridge',
             executable='parameter_bridge',
             arguments=[
-                '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist'
+                '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
+                '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan'
             ],
             output='screen'
         ),
