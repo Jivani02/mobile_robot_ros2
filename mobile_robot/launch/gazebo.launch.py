@@ -27,7 +27,7 @@ def generate_launch_description():
         # Start Gazebo Sim itself, with an empty world
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(gz_launch_path),
-            launch_arguments={'gz_args': '-r empty.sdf'}.items()
+            launch_arguments={'gz_args': '-r /opt/ros/jazzy/share/turtlebot3_gazebo/worlds/turtlebot3_world.world'}.items()
         ),
 
         # Publish robot_description and TF, same as your RViz2 launch file
@@ -45,7 +45,9 @@ def generate_launch_description():
             arguments=[
                 '-topic', 'robot_description',
                 '-name', 'mobile_robot',
-                '-z', '0.5'
+                '-x', '0.0',
+                '-y', '-2.0',
+                '-z', '0.0'
             ],
             output='screen'
         ),
