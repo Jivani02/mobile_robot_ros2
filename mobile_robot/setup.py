@@ -11,7 +11,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', ['launch/talk_listen.launch.py','launch/display.launch.py']),
-        ('share/' + package_name + '/launch', ['launch/gazebo.launch.py']),
+        ('share/' + package_name + '/launch', ['launch/gazebo.launch.py','launch/slam.launch.py']),
         ('share/' + package_name + '/urdf', ['urdf/mobile_robot.urdf']),
         
         ('share/' + package_name + '/meshes', [

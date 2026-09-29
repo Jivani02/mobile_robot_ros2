@@ -27,7 +27,7 @@ def generate_launch_description():
         # Start Gazebo Sim itself, with an empty world
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(gz_launch_path),
-            launch_arguments={'gz_args': '-r /opt/ros/jazzy/share/turtlebot3_gazebo/worlds/turtlebot3_world.world'}.items()
+            launch_arguments={'gz_args': '-r /opt/ros/jazzy/share/turtlebot3_gazebo/worlds/turtlebot3_house.world'}.items()
         ),
 
         # Publish robot_description and TF, same as your RViz2 launch file
@@ -35,7 +35,10 @@ def generate_launch_description():
             package='robot_state_publisher',
             executable='robot_state_publisher',
             name='robot_state_publisher',
-            parameters=[{'robot_description': Command(['xacro ', urdf_path])}]
+            parameters=[{
+                'robot_description': Command(['xacro ', urdf_path]),
+                'use_sim_time': True,
+            }]
         ),
 
         # Spawn the robot into Gazebo Sim, reading from the /robot_description topic
@@ -51,6 +54,13 @@ def generate_launch_description():
             ],
             output='screen'
         ),
+
+        # static transform
+        Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            arguments=['0', '0', '0', '0', '0', '0', 'lidar_link', 'mobile_robot/lidar_link/lidar_sensor']
+        ),
             
         # Cmd_vel bridge from gazebo to ros2
         Node(
@@ -58,8 +68,14 @@ def generate_launch_description():
             executable='parameter_bridge',
             arguments=[
                 '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
-                '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan'
+                '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
+                '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
+                '/world/default/model/mobile_robot/joint_state@sensor_msgs/msg/JointState@gz.msgs.Model'
             ],
+            remappings=[
+            ('/world/default/model/mobile_robot/joint_state', '/joint_states')
+            ],
+            
             output='screen'
         ),
     ])

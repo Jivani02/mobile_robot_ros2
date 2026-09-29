@@ -1,0 +1,17 @@
+digraph G {
+"body1" -> "front_left_wheel_1__body1"[label=" Broadcaster: default_authority\nAverage rate: 1000.907\nBuffer length: 1.103\nMost recent transform: 421.064\nOldest transform: 419.961\n"];
+"dummy_root" -> "body1"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"body1" -> "front_right_wheel_1__body1"[label=" Broadcaster: default_authority\nAverage rate: 1000.907\nBuffer length: 1.103\nMost recent transform: 421.064\nOldest transform: 419.961\n"];
+"body1" -> "reae_right_wheel_1__body1"[label=" Broadcaster: default_authority\nAverage rate: 1000.907\nBuffer length: 1.103\nMost recent transform: 421.064\nOldest transform: 419.961\n"];
+"body1" -> "rear_left_wheel_1__body1"[label=" Broadcaster: default_authority\nAverage rate: 1000.907\nBuffer length: 1.103\nMost recent transform: 421.064\nOldest transform: 419.961\n"];
+"lidar_link" -> "mobile_robot/lidar_link/lidar_sensor"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"body1" -> "lidar_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"body1" -> "base_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"odom" -> "dummy_root"[label=" Broadcaster: default_authority\nAverage rate: 50.926\nBuffer length: 1.08\nMost recent transform: 421.06\nOldest transform: 419.98\n"];
+"body1" -> "stereo_camera_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"map" -> "odom"[label=" Broadcaster: default_authority\nAverage rate: 10.909\nBuffer length: 1.1\nMost recent transform: 421.2\nOldest transform: 420.1\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1790510093.5830019"[ shape=plaintext ] ;
+}->"map";
+}
