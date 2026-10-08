@@ -10,18 +10,37 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', ['launch/talk_listen.launch.py','launch/display.launch.py']),
-        ('share/' + package_name + '/launch', ['launch/gazebo.launch.py','launch/slam.launch.py']),
+        
+        
+        ('share/' + package_name + '/launch', [
+            'launch/talk_listen.launch.py',
+            'launch/display.launch.py',
+            'launch/gazebo.launch.py',
+            'launch/slam.launch.py',
+            'launch/nav2.launch.py'
+        ]),
+        
         ('share/' + package_name + '/urdf', ['urdf/mobile_robot.urdf']),
         
+        ('share/' + package_name + '/maps', [
+            'maps/house_map.pgm', 
+            'maps/house_map.yaml'
+        ]),
+        
+        ('share/' + package_name + '/config', [
+            'config/mapper_params.yaml', 
+            'config/nav2_params.yaml'
+        ]),
+        
         ('share/' + package_name + '/meshes', [
-                'meshes/Body1.stl',
-                'meshes/front_left_wheel_1__Body1.stl',
-                'meshes/front_right_wheel_1__Body1.stl',
-                'meshes/reae_right_wheel_1__Body1.stl',
-                'meshes/rear_left_wheel_1__Body1.stl',
-         ]),
+            'meshes/Body1.stl',
+            'meshes/front_left_wheel_1__Body1.stl',
+            'meshes/front_right_wheel_1__Body1.stl',
+            'meshes/reae_right_wheel_1__Body1.stl', 
+            'meshes/rear_left_wheel_1__Body1.stl',
+        ]),
     ],
+
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='jivani02',

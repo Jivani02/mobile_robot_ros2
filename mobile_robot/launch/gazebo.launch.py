@@ -48,8 +48,8 @@ def generate_launch_description():
             arguments=[
                 '-topic', 'robot_description',
                 '-name', 'mobile_robot',
-                '-x', '0.0',
-                '-y', '-2.0',
+                '-x', '-1.0',
+                '-y', '1.0',
                 '-z', '0.0'
             ],
             output='screen'

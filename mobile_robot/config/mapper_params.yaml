@@ -12,7 +12,7 @@ slam_toolbox:
     # ROS Parameters
     odom_frame: odom
     map_frame: map
-    base_frame: dummy_root
+    base_frame: body1
     scan_topic: /scan
     scan_qos_profile: "RELIABLE"
     use_map_saver: true
