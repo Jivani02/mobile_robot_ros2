@@ -50,7 +50,7 @@ def generate_launch_description():
                 '-name', 'mobile_robot',
                 '-x', '-1.0',
                 '-y', '1.0',
-                '-z', '0.0'
+                '-z', '0.5'
             ],
             output='screen'
         ),
@@ -70,6 +70,7 @@ def generate_launch_description():
                 '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
                 '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
                 '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
+                '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
                 '/world/default/model/mobile_robot/joint_state@sensor_msgs/msg/JointState@gz.msgs.Model'
             ],
             remappings=[

@@ -10,19 +10,14 @@ A ROS2 port of the [ROS1 mobile_robot project](https://github.com/Jivani02/mobil
 - Done: **URDF ported and spawning in Gazebo Sim** — robot correctly loads, renders, and simulates physics
 - Done: **Differential drive control** — `gz-sim-diff-drive-system` plugin, bridged to ROS2 via `ros_gz_bridge`, confirmed driving via `/cmd_vel`
 - Done: **LiDAR sensing** — `gpu_lidar` sensor, bridged to `/scan`, confirmed producing real range data against walls/obstacles
-- - Done: SLAM — slam_toolbox, saved a clean occupancy-grid map of the house world (maps/house_map.yaml)
-Done: **Odometry calibration** — wheel_separation tuned empirically from controlled rotation tests (angular odometry error ~50% → ~1%)
-Done: **Robot model in RViz2** — meshes render alongside TF, map and LaserScan displays
-Done: **Nav2 localization & planning** — nav2_bringup with AMCL on the saved map; global path planning, costmaps and goal execution working in simulation; RViz2 pose and Gazebo pose aligned (same position and heading)
+- Done: **SLAM** — slam_toolbox, saved a clean occupancy-grid map of the house world (maps/house_map.yaml)
+- Done: **Odometry calibration** — wheel_separation tuned empirically from controlled rotation tests (angular odometry error ~50% → ~1%)
+- Done: **Robot model in RViz2** — meshes render alongside TF, map and LaserScan displays
+- Done: **Nav2 localization & planning** — nav2_bringup with AMCL on the saved map; global path planning, costmaps and goal execution verified end-to-end in simulation, including routing through a narrow doorway; RViz2 pose and Gazebo pose aligned (same position and heading)
 
-## In progress (Nav2 tuning):
+## In progress:
 
-- Wheel slip during in-place rotation and straight driving (traction/friction and acceleration limits)
-- Goal overshoot — linear odometry calibration via wheel_radius
-- Tuning costmap inflation for narrow gaps without clipping obstacles
-
-**Planned next:**
-- Stereo camera port
+- add Stereo camera
 
 ## Tech Stack
 
@@ -63,6 +58,11 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
 # Build a map with SLAM (run alongside gazebo.launch.py)
 ros2 launch mobile_robot slam.launch.py
+
+
+# Navigate autonomously on the saved map (run alongside gazebo.launch.py)
+ros2 launch mobile_robot nav2.launch.py
+# In RViz2: set the 2D Goal Pose
 
 # View the robot model and TF frames only (no simulation)
 ros2 launch mobile_robot display.launch.py
